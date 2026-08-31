@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Management</title>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="SubscriptionManagement.html">Subscription Management</a></li>
+            <li><a href="AccountSettings.html">Account Settings</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Subscription Management</h1>
+        <p>Manage your subscriptions here. You can view your current subscriptions, update payment methods, and cancel or renew subscriptions.</p>
+        <table>
+            <thead>
+                
+                    <tr>
+                        <th scope="col">Plan</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Storage</th>
+                        <th scope="col">Users</th>
+                        <th scope="col">Support</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <th scope="row">Basic</th>
+                        <td>$9.99/month</td>
+                        <td>10 GB</td>
+                        <td>1</td>
+                        <td>Email</td>
+                        </td>
+                    </tr>
+                </tbody>
+<form action="/update-subscription" method="post">
+                <select>
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                </select>
+
+</form>
+
+<img src="subscription-management.png" alt="Subscription Management" style="width:100%;max-width:600px;">
+
+<label>
+    <input type="checkbox" name="terms">
+    I agree to the terms and conditions
+
+</label>
+    </main>
+</body>
+</html>

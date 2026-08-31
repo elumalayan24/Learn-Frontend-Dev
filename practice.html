@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Management</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Subscription Management</h1>
+
+        <nav aria-label="Main navigation">
+            <a href="#overview">Overview</a> |
+            <a href="#plans">Plans</a> |
+            <a href="#billing">Billing</a> |
+            <a href="#notifications">Notifications</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Subscription Overview -->
+        <section id="overview">
+            <h2>Current Subscription</h2>
+
+            <p>
+                <strong>Current Plan:</strong> Professional
+            </p>
+
+            <p>
+                <strong>Status:</strong> Active
+            </p>
+
+            <p>
+                <strong>Next Billing Date:</strong> September 30, 2026
+            </p>
+
+            <p>
+                <strong>Monthly Price:</strong> $29.99
+            </p>
+
+            <button type="button">
+                Cancel Subscription
+            </button>
+        </section>
+
+        <hr>
+
+        <!-- Available Plans -->
+        <section id="plans">
+            <h2>Available Plans</h2>
+
+            <table>
+                <caption>Compare available subscription plans</caption>
+
+                <thead>
+                    <tr>
+                        <th scope="col">Plan</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Storage</th>
+                        <th scope="col">Users</th>
+                        <th scope="col">Support</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th scope="row">Basic</th>
+                        <td>$9.99/month</td>
+                        <td>10 GB</td>
+                        <td>1</td>
+                        <td>Email</td>
+                        <td>
+                            <button type="button">Select</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Professional</th>
+                        <td>$29.99/month</td>
+                        <td>100 GB</td>
+                        <td>5</td>
+                        <td>Priority</td>
+                        <td>
+                            <button type="button" disabled>
+                                Current Plan
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Enterprise</th>
+                        <td>$99.99/month</td>
+                        <td>1 TB</td>
+                        <td>Unlimited</td>
+                        <td>24/7 Support</td>
+                        <td>
+                            <button type="button">Select</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <!-- Change Plan Form -->
+        <section>
+            <h2>Change Subscription</h2>
+
+            <form action="/change-subscription" method="post">
+
+                <fieldset>
+                    <legend>Select a new subscription plan</legend>
+
+                    <p>
+                        <input
+                            type="radio"
+                            id="basic"
+                            name="plan"
+                            value="basic"
+                        >
+                        <label for="basic">Basic - $9.99/month</label>
+                    </p>
+
+                    <p>
+                        <input
+                            type="radio"
+                            id="professional"
+                            name="plan"
+                            value="professional"
+                            checked
+                        >
+                        <label for="professional">
+                            Professional - $29.99/month
+                        </label>
+                    </p>
+
+                    <p>
+                        <input
+                            type="radio"
+                            id="enterprise"
+                            name="plan"
+                            value="enterprise"
+                        >
+                        <label for="enterprise">
+                            Enterprise - $99.99/month
+                        </label>
+                    </p>
+                </fieldset>
+
+                <br>
+
+                <label for="billing-cycle">
+                    Billing Cycle:
+                </label>
+
+                <select id="billing-cycle" name="billing_cycle">
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                </select>
+
+                <br><br>
+
+                <button type="submit">
+                    Update Subscription
+                </button>
+
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- Billing Information -->
+        <section id="billing">
+            <h2>Billing Information</h2>
+
+            <form action="/update-billing" method="post">
+
+                <fieldset>
+                    <legend>Payment Details</legend>
+
+                    <p>
+                        <label for="card-name">
+                            Name on Card:
+                        </label>
+                        <input
+                            type="text"
+                            id="card-name"
+                            name="card_name"
+                            required
+                            autocomplete="cc-name"
+                        >
+                    </p>
+
+                    <p>
+                        <label for="card-number">
+                            Card Number:
+                        </label>
+                        <input
+                            type="text"
+                            id="card-number"
+                            name="card_number"
+                            required
+                            inputmode="numeric"
+                            autocomplete="cc-number"
+                        >
+                    </p>
+
+                    <p>
+                        <label for="expiry">
+                            Expiry Date:
+                        </label>
+                        <input
+                            type="month"
+                            id="expiry"
+                            name="expiry"
+                            required
+                            autocomplete="cc-exp"
+                        >
+                    </p>
+
+                    <p>
+                        <label for="country">
+                            Billing Country:
+                        </label>
+
+                        <select
+                            id="country"
+                            name="country"
+                            required
+                        >
+                            <option value="">Select a country</option>
+                            <option value="my">Malaysia</option>
+                            <option value="sg">Singapore</option>
+                            <option value="in">India</option>
+                            <option value="us">United States</option>
+                            <option value="uk">United Kingdom</option>
+                        </select>
+                    </p>
+
+                </fieldset>
+
+                <br>
+
+                <button type="submit">
+                    Update Billing Information
+                </button>
+
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- Notification Preferences -->
+        <section id="notifications">
+            <h2>Notification Preferences</h2>
+
+            <form action="/update-notifications" method="post">
+
+                <fieldset>
+                    <legend>Email Notifications</legend>
+
+                    <p>
+                        <input
+                            type="checkbox"
+                            id="billing-notifications"
+                            name="notifications"
+                            value="billing"
+                            checked
+                        >
+
+                        <label for="billing-notifications">
+                            Billing and payment notifications
+                        </label>
+                    </p>
+
+                    <p>
+                        <input
+                            type="checkbox"
+                            id="renewal-notifications"
+                            name="notifications"
+                            value="renewal"
+                            checked
+                        >
+
+                        <label for="renewal-notifications">
+                            Subscription renewal reminders
+                        </label>
+                    </p>
+
+                    <p>
+                        <input
+                            type="checkbox"
+                            id="promotional-notifications"
+                            name="notifications"
+                            value="promotional"
+                        >
+
+                        <label for="promotional-notifications">
+                            Promotional emails
+                        </label>
+                    </p>
+
+                </fieldset>
+
+                <br>
+
+                <button type="submit">
+                    Save Preferences
+                </button>
+
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- Subscription History -->
+        <section>
+            <h2>Subscription History</h2>
+
+            <table>
+                <caption>Previous subscription transactions</caption>
+
+                <thead>
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Plan</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>August 30, 2026</td>
+                        <td>Professional</td>
+                        <td>$29.99</td>
+                        <td>Paid</td>
+                    </tr>
+
+                    <tr>
+                        <td>July 30, 2026</td>
+                        <td>Professional</td>
+                        <td>$29.99</td>
+                        <td>Paid</td>
+                    </tr>
+
+                    <tr>
+                        <td>June 30, 2026</td>
+                        <td>Basic</td>
+                        <td>$9.99</td>
+                        <td>Paid</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <hr>
+
+    <footer>
+        <p>&copy; 2026 Subscription Management</p>
+
+        <nav aria-label="Footer navigation">
+            <a href="/terms">Terms of Service</a> |
+            <a href="/privacy">Privacy Policy</a> |
+            <a href="/support">Support</a>
+        </nav>
+    </footer>
+
+</body>
+</html>
