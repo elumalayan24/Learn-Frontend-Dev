@@ -1,0 +1,163 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f6fb;
+    color: #1f2a44;
+}
+
+nav {
+    background-color: #1f2a44;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0 24px;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    display: block;
+    padding: 16px 20px;
+    color: #cbd5f5;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+nav a:hover {
+    background-color: #2b3a63;
+    color: #ffffff;
+}
+
+nav a.active {
+    color: #ffffff;
+    border-bottom: 3px solid #4f7cff;
+}
+
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 32px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(31, 42, 68, 0.08);
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 1.9rem;
+    color: #1f2a44;
+}
+
+main > p {
+    color: #5a6a8a;
+    line-height: 1.5;
+    margin-bottom: 28px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 28px;
+    font-size: 0.95rem;
+}
+
+thead th {
+    text-align: left;
+    background-color: #eef1fb;
+    color: #1f2a44;
+    padding: 12px 16px;
+    border-bottom: 2px solid #dde3f5;
+}
+
+tbody th,
+tbody td {
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid #edf0fa;
+}
+
+tbody tr:hover {
+    background-color: #f9fafe;
+}
+
+.btn-renew {
+    padding: 6px 14px;
+    background-color: #4f7cff;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.btn-renew:hover {
+    background-color: #3a63e0;
+}
+
+.update-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding-top: 8px;
+    border-top: 1px solid #edf0fa;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.form-row label {
+    font-weight: 500;
+    color: #1f2a44;
+}
+
+.form-row select {
+    padding: 8px 12px;
+    border: 1px solid #d7ddf0;
+    border-radius: 6px;
+    background-color: #ffffff;
+    font-size: 0.95rem;
+    color: #1f2a44;
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #5a6a8a;
+    font-size: 0.95rem;
+}
+
+.checkbox-row input {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-submit {
+    align-self: flex-start;
+    padding: 10px 22px;
+    background-color: #1f2a44;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.btn-submit:hover {
+    background-color: #35456f;
+}

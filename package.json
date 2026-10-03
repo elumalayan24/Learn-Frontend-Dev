@@ -1,0 +1,12 @@
+{
+  "name": "learn-frontend-dev",
+  "version": "1.0.0",
+  "description": "Practice project for learning HTML, CSS, and frontend fundamentals",
+  "private": true,
+  "scripts": {
+    "start": "live-server --port=5500 --open=SubscriptionManagement.html"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
