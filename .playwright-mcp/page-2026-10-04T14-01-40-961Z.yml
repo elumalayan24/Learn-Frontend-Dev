@@ -1,0 +1,99 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "MyBrand" [ref=e4] [cursor=pointer]:
+        - /url: "#"
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "Buttons" [ref=e7] [cursor=pointer]:
+            - /url: "#buttons"
+        - listitem [ref=e8]:
+          - link "Cards" [ref=e9] [cursor=pointer]:
+            - /url: "#cards"
+        - listitem [ref=e10]:
+          - link "Form" [ref=e11] [cursor=pointer]:
+            - /url: "#form"
+        - listitem [ref=e12]:
+          - link "Grid" [ref=e13] [cursor=pointer]:
+            - /url: "#grid"
+      - button "Toggle dark mode" [ref=e15] [cursor=pointer]: 🌙 Dark
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - heading "Practice Tailwind CSS" [level=1] [ref=e18]
+      - paragraph [ref=e19]: Resize the window to see responsive classes (sm:, md:, lg:) in action.
+      - link "Get started" [ref=e20] [cursor=pointer]:
+        - /url: "#buttons"
+    - generic [ref=e21]:
+      - heading "Buttons" [level=2] [ref=e22]
+      - generic [ref=e23]:
+        - button "Primary" [ref=e24] [cursor=pointer]
+        - button "Outline" [ref=e25] [cursor=pointer]
+        - button "Danger" [ref=e26] [cursor=pointer]
+        - button "Disabled" [disabled] [ref=e27]
+        - button "Small pill" [ref=e28] [cursor=pointer]
+        - button "Large" [ref=e29] [cursor=pointer]
+    - generic [ref=e30]:
+      - heading "Cards" [level=2] [ref=e31]
+      - generic [ref=e32]:
+        - article [ref=e33]:
+          - generic [ref=e35]:
+            - text: Design
+            - heading "Card title" [level=3] [ref=e36]
+            - paragraph [ref=e37]: Hover the card to see group-hover in action.
+        - article [ref=e38]:
+          - generic [ref=e40]:
+            - text: Code
+            - heading "Another card" [level=3] [ref=e41]
+            - paragraph [ref=e42]: Try changing padding, radius and colors.
+        - article [ref=e43]:
+          - generic [ref=e45]:
+            - text: Learn
+            - heading "Third card" [level=3] [ref=e46]
+            - paragraph [ref=e47]: Cards stack to 1, 2, then 3 columns.
+    - generic [ref=e48]:
+      - heading "Form" [level=2] [ref=e49]
+      - generic [ref=e50]:
+        - generic [ref=e51]:
+          - generic [ref=e52]: Name
+          - textbox "Name" [ref=e53]:
+            - /placeholder: Your name
+        - generic [ref=e54]:
+          - generic [ref=e55]: Email
+          - textbox "Email" [ref=e56]:
+            - /placeholder: you@example.com
+        - generic [ref=e57]:
+          - checkbox "Subscribe to newsletter" [ref=e58]
+          - text: Subscribe to newsletter
+        - button "Submit" [ref=e59] [cursor=pointer]
+    - generic [ref=e60]:
+      - heading "Layout, alerts & badges" [level=2] [ref=e61]
+      - generic [ref=e62]:
+        - generic [ref=e63]: col-span-2
+        - generic [ref=e64]: "1"
+        - generic [ref=e65]: "1"
+        - generic [ref=e66]: "1"
+        - generic [ref=e67]: col-span-3
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - strong [ref=e70]: Success!
+          - generic [ref=e71]: Your changes have been saved.
+        - generic [ref=e72]:
+          - strong [ref=e73]: Error!
+          - generic [ref=e74]: Something went wrong.
+      - generic [ref=e75]:
+        - generic [ref=e76]: New
+        - generic [ref=e77]: Beta
+        - generic [ref=e78]: v1.0
+    - generic [ref=e79]:
+      - heading "Your turn 🚀" [level=2] [ref=e80]
+      - list [ref=e81]:
+        - listitem [ref=e82]: Build a pricing table with 3 tiers (highlight the middle one).
+        - listitem [ref=e83]:
+          - text: "Try a new brand color: edit the"
+          - code [ref=e84]: "--color-brand-*"
+          - text: tokens in the
+          - code [ref=e85]: <style>
+          - text: block.
+        - listitem [ref=e86]: Make the navbar's mobile "Menu" button open a dropdown (needs a bit of JS).
+        - listitem [ref=e87]: Recreate a section of a website you like.
+  - contentinfo [ref=e88]: Built while learning Tailwind CSS

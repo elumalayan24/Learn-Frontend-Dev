@@ -1,0 +1,71 @@
+────────────────────────────────────────────────────────────────────────────────
+ ▐▛███▜▌   Claude Code · Learn Frontend Dev
+▝▜█████▛▘  2026-10-04 14:58 · Branch: master
+  ▘▘ ▝▝    Session: 406e5920
+────────────────────────────────────────────────────────────────────────────────
+
+❯ tell me other useful mcps for a full stack developer and a qa
+
+⏺ You already have Playwright, Postman, GitKraken, JetBrains IDE, and Desktop
+  Commander connected. The GitHub MCP failed to connect this session with a
+  malformed Authorization header error, so check its token config. These are
+  other MCPs worth adding. I'm going from memory, so check each one's current
+  package name before installing.
+
+## Full-stack developer
+
+| MCP | What it's for |
+|---|---|
+| **GitHub** | PRs, issues, code search, and Actions runs. Yours needs fixing. |
+| **Context7** | Pulls up-to-date library and framework docs into the prompt, so
+  you get fewer outdated API suggestions. This is probably the highest-value one
+  for learning frontend. |
+| **Figma** | Reads designs and turns them into components. It's listed as
+  needing auth for you. |
+| **Filesystem** | Sandboxed file access. Mostly redundant with Claude Code's
+  built-in tools. |
+| **Postgres / MySQL / SQLite / Supabase** | Inspect schemas and run queries
+  against your DB. |
+| **MongoDB / Redis** | Official MCPs for NoSQL and cache inspection. |
+| **Docker** | Manage containers and compose stacks. |
+| **Sentry** | Pull real production errors and stack traces while debugging. |
+| **Vercel / Netlify / Cloudflare** | Deploys, logs, and env vars. |
+| **Stripe** | Test payment flows and inspect customers and webhooks. |
+| **Memory (knowledge graph)** | Persistent notes across sessions. |
+| **Sequential Thinking** | Structured step-by-step reasoning for hard design
+  problems. |
+
+## QA
+
+| MCP | What it's for |
+|---|---|
+| **Playwright** | Browser automation and E2E tests. You have it. |
+| **Chrome DevTools MCP** | Performance traces, network and console inspection,
+  and Lighthouse-style audits. It complements Playwright. |
+| **Puppeteer** | An alternative to Playwright. Not much reason to run both. |
+| **BrowserStack / Sauce Labs** | Cross-browser and real-device testing. |
+| **Postman / Newman** | API test collections and CI runs. You have Postman. |
+| **Jira / Atlassian, Linear** | Bug tickets, test case links, and sprint
+  status. Both need auth for you. |
+| **TestRail / Zephyr** | Test case management, where community or vendor MCPs
+  exist. |
+| **Lighthouse / axe (a11y)** | Accessibility and performance audits. |
+| **k6 / Grafana** | Load testing and metrics dashboards. |
+| **Datadog / BetterStack** | Logs and incident investigation. Both need auth
+  for you. |
+| **Slack** | Post test results and bug reports to a channel. It needs auth for
+  you. |
+
+## Suggested starting set for you
+
+Since you're learning frontend and already use Playwright, I'd add these three:
+1. **Context7** for accurate docs.
+2. **Chrome DevTools MCP** for debugging layout, performance, and network
+  issues.
+3. **GitHub** (fixed), since your repo already has commits.
+
+I can give you the exact `claude mcp add` commands for these if you want. I can
+  also help fix the GitHub connection.
+
+────────────────────────────────────────────────────────────────────────────────
+

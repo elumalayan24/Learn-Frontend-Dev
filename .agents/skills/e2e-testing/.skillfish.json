@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "e2e-testing",
+  "owner": "affaan-m",
+  "repo": "ecc",
+  "path": ".agents/skills/e2e-testing",
+  "branch": "main",
+  "sha": "21bc127cfb201d9091c318f6d9ca863db60f5936",
+  "source": "manual"
+}

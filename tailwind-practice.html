@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tailwind Practice</title>
+  <!-- Tailwind Play CDN: no build step needed -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!--
+    DESIGN TOKENS
+    Values are RGB channels so Tailwind opacity modifiers work (e.g. bg-brand/50).
+    Change a value here and the whole page follows. .dark overrides them for dark mode.
+  -->
+  <style>
+    :root {
+      /* surfaces & text */
+      --color-surface: 241 245 249;
+      --color-card: 255 255 255;
+      --color-fg: 30 41 59;
+      --color-muted: 100 116 139;
+      --color-line: 203 213 225;
+
+      /* brand */
+      --color-brand: 79 70 229;
+      --color-brand-hover: 67 56 202;
+      --color-brand-ring: 165 180 252;
+      --color-brand-soft: 238 242 255;
+      --color-brand-soft-fg: 67 56 202;
+      --color-brand-from: 99 102 241;
+      --color-brand-to: 147 51 234;
+      --color-on-brand: 255 255 255;
+
+      /* inverse (high-contrast button) & footer */
+      --color-inverse: 30 41 59;
+      --color-inverse-fg: 255 255 255;
+      --color-footer: 30 41 59;
+      --color-footer-fg: 203 213 225;
+
+      /* status */
+      --color-success: 16 185 129;
+      --color-success-bg: 236 253 245;
+      --color-success-fg: 6 95 70;
+      --color-danger: 244 63 94;
+      --color-danger-bg: 255 241 242;
+      --color-danger-fg: 159 18 57;
+      --color-warning-bg: 254 243 199;
+      --color-warning-fg: 180 83 9;
+    }
+    .dark {
+      --color-surface: 15 23 42;
+      --color-card: 30 41 59;
+      --color-fg: 241 245 249;
+      --color-muted: 148 163 184;
+      --color-line: 71 85 105;
+
+      --color-brand: 99 102 241;
+      --color-brand-hover: 129 140 248;
+      --color-brand-ring: 55 48 163;
+      --color-brand-soft: 49 46 129;
+      --color-brand-soft-fg: 199 210 254;
+      --color-brand-from: 67 56 202;
+      --color-brand-to: 107 33 168;
+
+      --color-inverse: 241 245 249;
+      --color-inverse-fg: 15 23 42;
+      --color-footer: 2 6 23;
+
+      --color-success-bg: 2 44 34;
+      --color-success-fg: 167 243 208;
+      --color-danger-bg: 76 5 25;
+      --color-danger-fg: 254 205 211;
+      --color-warning-bg: 120 53 15;
+      --color-warning-fg: 253 230 138;
+    }
+  </style>
+
+  <script>
+    // Map the CSS variables to Tailwind utilities (bg-brand, text-muted, border-line, rounded-card ...)
+    const token = (name) => `rgb(var(--color-${name}) / <alpha-value>)`;
+
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            surface: token('surface'),
+            card: token('card'),
+            fg: token('fg'),
+            muted: token('muted'),
+            line: token('line'),
+            brand: {
+              DEFAULT: token('brand'),
+              hover: token('brand-hover'),
+              ring: token('brand-ring'),
+              soft: token('brand-soft'),
+              'soft-fg': token('brand-soft-fg'),
+              from: token('brand-from'),
+              to: token('brand-to'),
+            },
+            'on-brand': token('on-brand'),
+            inverse: { DEFAULT: token('inverse'), fg: token('inverse-fg') },
+            footer: { DEFAULT: token('footer'), fg: token('footer-fg') },
+            success: { DEFAULT: token('success'), bg: token('success-bg'), fg: token('success-fg') },
+            danger: { DEFAULT: token('danger'), bg: token('danger-bg'), fg: token('danger-fg') },
+            warning: { bg: token('warning-bg'), fg: token('warning-fg') },
+          },
+          borderRadius: {
+            control: '0.375rem', // buttons, inputs
+            card: '0.75rem',     // cards, panels
+            hero: '1rem',
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          boxShadow: {
+            card: '0 1px 3px rgb(0 0 0 / 0.12), 0 1px 2px rgb(0 0 0 / 0.08)',
+            'card-hover': '0 10px 20px rgb(0 0 0 / 0.18)',
+          },
+        },
+      },
+    };
+
+    // Apply saved/system theme before paint to avoid a flash
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) {}
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+</head>
+<body class="bg-surface text-fg font-sans transition-colors">
+
+  <!-- 1. NAVBAR: flex, spacing, hover, responsive hiding -->
+  <header class="bg-card shadow sticky top-0 z-10">
+    <nav class="max-w-5xl mx-auto flex items-center justify-between px-4 py-3">
+      <a href="#" class="text-sm font-bold text-brand">MyBrand</a>
+      <ul class="hidden sm:flex gap-6 text-sm font-medium">
+        <li><a href="#buttons" class="hover:text-brand transition">Buttons</a></li>
+        <li><a href="#cards" class="hover:text-brand transition">Cards</a></li>
+        <li><a href="#form" class="hover:text-brand transition">Form</a></li>
+        <li><a href="#grid" class="hover:text-brand transition">Grid</a></li>
+      </ul>
+      <div class="flex items-center gap-2">
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode"
+          class="px-3 py-1 text-sm border border-line rounded-control hover:bg-brand-soft hover:text-brand-soft-fg transition">
+          <span class="dark:hidden">🌙 Dark</span>
+          <span class="hidden dark:inline">☀️ Light</span>
+        </button>
+        <button class="sm:hidden px-3 py-1 border border-line rounded-control">Menu</button>
+      </div>
+    </nav>
+    <div class="gorup/card"></div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-10 space-y-16">
+
+    <!-- 2. HERO: typography, gradient, buttons -->
+    <section class="rounded-hero bg-gradient-to-r from-brand-from to-brand-to text-on-brand p-10 text-center">
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Practice Tailwind CSS</h1>
+      <p class="mt-4 text-on-brand/80 max-w-xl mx-auto">Resize the window to see responsive classes (sm:, md:, lg:) in action.</p>
+      <a href="#buttons" class="inline-block mt-6 bg-on-brand text-brand font-semibold px-6 py-2 rounded-full hover:bg-brand-soft active:scale-95 transition">Get started</a>
+    </section>
+
+    <!-- 3. BUTTONS: colors, states, sizes -->
+    <section id="buttons">
+      <h2 class="text-2xl font-bold mb-4">Buttons</h2>
+      <div class="flex flex-wrap items-center gap-3">
+        <button class="px-4 py-2 rounded-control bg-brand text-on-brand hover:bg-brand-hover focus:ring-4 focus:ring-brand-ring">Primary</button>
+        <button class="px-4 py-2 rounded-control border border-brand text-brand hover:bg-brand-soft">Outline</button>
+        <button class="px-4 py-2 rounded-control bg-danger text-on-brand hover:opacity-90">Danger</button>
+        <button class="px-4 py-2 rounded-control bg-line text-muted cursor-not-allowed" disabled>Disabled</button>
+        <button class="px-2 py-1 text-xs rounded-full bg-success text-on-brand">Small pill</button>
+        <button class="px-8 py-3 text-lg rounded-lg bg-inverse text-inverse-fg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition">Large</button>
+      </div>
+    </section>
+
+    <!-- 4. CARDS: shadow, rounded, group-hover, overflow -->
+    <section id="cards">
+      <h2 class="text-2xl font-bold mb-4">Cards</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="group bg-card rounded-card shadow-card hover:shadow-card-hover transition overflow-hidden">
+          <div class="h-32 bg-gradient-to-br from-sky-400 to-cyan-300 group-hover:scale-105 transition-transform"></div>
+          <div class="p-5">
+            <span class="text-xs font-semibold uppercase text-sky-600 dark:text-sky-400">Design</span>
+            <h3 class="mt-1 text-lg font-bold">Card title</h3>
+            <p class="mt-2 text-sm text-muted">Hover the card to see group-hover in action.</p>
+          </div>
+        </article>
+        <article class="group bg-card rounded-card shadow-card hover:shadow-card-hover transition overflow-hidden">
+          <div class="h-32 bg-gradient-to-br from-amber-400 to-orange-400 group-hover:scale-105 transition-transform"></div>
+          <div class="p-5">
+            <span class="text-xs font-semibold uppercase text-amber-600 dark:text-amber-400">Code</span>
+            <h3 class="mt-1 text-lg font-bold">Another card</h3>
+            <p class="mt-2 text-sm text-muted">Try changing padding, radius and colors.</p>
+          </div>
+        </article>
+        <article class="group bg-card rounded-card shadow-card hover:shadow-card-hover transition overflow-hidden">
+          <div class="h-32 bg-gradient-to-br from-emerald-400 to-teal-300 group-hover:scale-105 transition-transform"></div>
+          <div class="p-5">
+            <span class="text-xs font-semibold uppercase text-emerald-600 dark:text-emerald-400">Learn</span>
+            <h3 class="mt-1 text-lg font-bold">Third card</h3>
+            <p class="mt-2 text-sm text-muted">Cards stack to 1, 2, then 3 columns.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. FORM: inputs, focus states, flex layout -->
+    <section id="form">
+      <h2 class="text-2xl font-bold mb-4">Form</h2>
+      <form class="bg-card rounded-card shadow-card p-6 max-w-md space-y-4">
+        <div>
+          <label class="block text-sm font-medium mb-1" for="name">Name</label>
+          <input id="name" type="text" placeholder="Your name"
+            class="w-full rounded-control border border-line bg-surface text-fg placeholder:text-muted px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="email">Email</label>
+          <input id="email" type="email" placeholder="you@example.com"
+            class="w-full rounded-control border border-line bg-surface text-fg placeholder:text-muted px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand" />
+        </div>
+        <label class="flex items-center gap-2 text-sm">
+          <input type="checkbox" class="h-4 w-4 accent-brand" /> Subscribe to newsletter
+        </label>
+        <button type="submit" class="w-full py-2 rounded-control bg-brand text-on-brand font-semibold hover:bg-brand-hover">Submit</button>
+      </form>
+    </section>
+
+    <!-- 6. GRID / FLEX / ALERTS / BADGES -->
+    <section id="grid">
+      <h2 class="text-2xl font-bold mb-4">Layout, alerts &amp; badges</h2>
+
+      <div class="grid grid-cols-4 gap-2 text-center text-white font-semibold">
+        <div class="col-span-2 bg-brand p-4 rounded-control">col-span-2</div>
+        <div class="bg-pink-500 p-4 rounded-control">1</div>
+        <div class="bg-teal-500 p-4 rounded-control">1</div>
+        <div class="bg-amber-500 p-4 rounded-control">1</div>
+        <div class="col-span-3 bg-slate-600 p-4 rounded-control">col-span-3</div>
+      </div>
+
+      <div class="mt-6 space-y-3">
+        <div class="flex items-start gap-3 rounded-lg border-l-4 border-success bg-success-bg text-success-fg p-4">
+          <strong>Success!</strong> <span>Your changes have been saved.</span>
+        </div>
+        <div class="flex items-start gap-3 rounded-lg border-l-4 border-danger bg-danger-bg text-danger-fg p-4">
+          <strong>Error!</strong> <span>Something went wrong.</span>
+        </div>
+      </div>
+
+      <div class="mt-6 flex gap-2">
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-brand-soft text-brand-soft-fg">New</span>
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning-bg text-warning-fg">Beta</span>
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-line text-fg">v1.0</span>
+      </div>
+    </section>
+
+    <!-- 7. YOUR TURN -->
+    <section class="rounded-card border-2 border-dashed border-line p-6">
+      <h2 class="text-2xl font-bold mb-2">Your turn 🚀</h2>
+      <ul class="list-disc list-inside text-muted space-y-1">
+        <li>Build a pricing table with 3 tiers (highlight the middle one).</li>
+        <li>Try a new brand color: edit the <code class="bg-line text-fg px-1 rounded-control">--color-brand-*</code> tokens in the <code class="bg-line text-fg px-1 rounded-control">&lt;style&gt;</code> block.</li>
+        <li>Make the navbar's mobile "Menu" button open a dropdown (needs a bit of JS).</li>
+        <li>Recreate a section of a website you like.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="bg-footer text-footer-fg text-center text-sm py-6">
+    Built while learning Tailwind CSS
+  </footer>
+
+  <script>
+    // Toggle dark mode and remember the choice
+    document.getElementById('theme-toggle').addEventListener('click', function () {
+      var isDark = document.documentElement.classList.toggle('dark');
+      try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (e) {}
+    });
+  </script>
+</body>
+</html>
